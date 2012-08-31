@@ -1,0 +1,17 @@
+aw_ccu.h
+ccmu_regs.h
+clkdev.h
+clock.h
+debug-macro.S
+dma.h
+dram.h
+gpio.h - do przeniesienia
+entry-macro.S
+i2c.h
+irqs.h
+map.h
+spi.h
+sys_config.h
+system.h
+uncompress.h -do analizy
+
