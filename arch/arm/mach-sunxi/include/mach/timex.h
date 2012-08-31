@@ -1,7 +1,10 @@
 /*
- * arch/arm/mach-sun5i/include/mach/timex.h
+ * arch/arm/mach-sunxi/include/mach/timex.h
  *
- * (C) Copyright 2007-2012
+ * (C) Copyright 2012
+ * Mateusz Krawczuk <willingmagic@cybrix.pl>
+ * 
+ * Original code by:
  * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
  * Benn Huang <benn@allwinnertech.com>
  *
@@ -15,19 +18,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
  */
 
-#ifndef __SW_TIMEX_H
-#define __SW_TIMEX_H
+#ifndef __SUNXI_TIMEX_H
+#define __SUNXI_TIMEX_H
 
-#define SYS_TIMER_SCAL      (16)            /* timer clock source pre-divsion   */
-#define SYS_TIMER_CLKSRC    (24000000)      /* timer clock source               */
-#define TMR_INTER_VAL       (SYS_TIMER_CLKSRC/(SYS_TIMER_SCAL*HZ))
+#define SYS_TIMER_SCAL		(16)            /* timer clock source pre-divsion   */
+#define SYS_TIMER_CLKSRC	(24000000)      /* timer clock source               */
+#define TMR_INTER_VAL		(SYS_TIMER_CLKSRC/(SYS_TIMER_SCAL*HZ))
 
-#define CLOCK_TICK_RATE     TMR_INTER_VAL 
+#define CLOCK_TICK_RATE		TMR_INTER_VAL 
 
 #endif

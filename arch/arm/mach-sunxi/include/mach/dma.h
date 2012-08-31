@@ -1,9 +1,12 @@
 /*
- * arch/arm/mach-sun5i/include/mach/dma.h
+ * arch/arm/mach-sunxi/include/mach/dma.h
  *
- * (C) Copyright 2007-2012
+ * (C) Copyright 2012
+ * Mateusz Krawczuk <willingmagic@cybrix.pl>
+ * 
+ * Original code by:
  * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
- * huangxin <huangxin@allwinnertech.com>
+ * Benn Huang <benn@allwinnertech.com>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -15,22 +18,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
  */
 
 #ifndef __ASM_ARCH_DMA_H
 #define __ASM_ARCH_DMA_H __FILE__
 
 #include <linux/sysdev.h>
-#include <mach/hardware.h>
 
+#define MAX_DMA_TRANSFER_SIZE	0x100000 /* Data Unit is half word  */
 
-#define MAX_DMA_TRANSFER_SIZE   0x100000 /* Data Unit is half word  */
-
-#define DMA_CH_VALID		(1<<31)
+#define DMA_CH_VALI		(1<<31)
 #define DMA_CH_NEVER		(1<<30)
 
 /* We use `virtual` dma channels to hide the fact we have only a limited
@@ -85,7 +82,7 @@ enum sw_dma_ch {
 #define N_DRQDST_SHIFT		16
 #define D_DRQSRC_SHIFT		0
 #define D_DRQDST_SHIFT		16
-#define DRQ_INVALID			0xff
+#define DRQ_INVALID		0xff
 
 /*normal DMA Source*/
 #define N_DRQSRC_IRRX		0b00000
@@ -133,25 +130,25 @@ enum sw_dma_ch {
 /*Dedicated DMA Source*/
 #define D_DRQSRC_SRAM		0b00000//0x0 SRAM memory
 #define D_DRQSRC_SDRAM		0b00001//0x1 SDRAM memory
-#define D_DRQSRC_NAND 		0b00011//0x3 NAND Flash Controller(NFC)
-#define D_DRQSRC_USB0 		0b00100//0x4 USB0
+#define D_DRQSRC_NAND		0b00011//0x3 NAND Flash Controller(NFC)
+#define D_DRQSRC_USB0		0b00100//0x4 USB0
 #define D_DRQSRC_EMACRX		0b00111//0x7 Ethernet MAC Rx
 #define D_DRQSRC_SPI1RX		0b01001//0x9 SPI1 RX
 #define D_DRQSRC_SECRX 		0b01011//0xB Security System Rx
-#define D_DRQSRC_MS 		0b10111//0x17 Memory Stick Controller(MSC)
+#define D_DRQSRC_MS		0b10111//0x17 Memory Stick Controller(MSC)
 #define D_DRQSRC_SPI0RX		0b11011//0x1B SPI0 RX
 #define D_DRQSRC_SPI2RX		0b11101//0x1D SPI2 RX
 
 /*Dedicated DMA Destination*/
 #define D_DRQDST_SRAM		0b00000//0x0 SRAM memory
 #define D_DRQDST_SDRAM		0b00001//0x1 SDRAM memory
-#define D_DRQDST_NAND 		0b00011//0x3 NAND Flash Controller(NFC)
-#define D_DRQDST_USB0 		0b00100//0x4 USB0
+#define D_DRQDST_NAND		0b00011//0x3 NAND Flash Controller(NFC)
+#define D_DRQDST_USB0		0b00100//0x4 USB0
 #define D_DRQDST_EMACTX		0b00110//0x6 Ethernet MAC Rx
 #define D_DRQDST_SPI1TX		0b01000//0x8 SPI1 RX
 #define D_DRQDST_SECTX 		0b01010//0xA Security System Tx
 #define D_DRQDST_TCON0 		0b01110//0xE TCON0
-#define D_DRQDST_MS			0b10111//0x17 Memory Stick Controller(MSC)
+#define D_DRQDST_MS		0b10111//0x17 Memory Stick Controller(MSC)
 #define D_DRQDST_HDMIAUDIO	0b11000//0x18 HDMI Audio
 #define D_DRQDST_SPI0TX		0b11010//0x1A SPI0 TX
 #define D_DRQDST_SPI2TX		0b11100//0x1C SPI2 TX
@@ -190,12 +187,12 @@ enum drq_type {
 
 
 /* DMAXFER_(dist)_(sigle/burst/tippl)_(byte/half/word)_(src)_(sigle/burst/tippl)_(byte/half/word) */
-#define X_SIGLE   0
-#define X_BURST   1
-#define X_TIPPL	  2
-#define X_BYTE    0
-#define X_HALF    1
-#define X_WORD    2
+#define X_SIGLE	0
+#define X_BURST	1
+#define X_TIPPL	2
+#define X_BYTE	0
+#define X_HALF	1
+#define X_WORD	2
 
 /*data length and burst length combination in DDMA and NDMA */
 enum xferunit {
@@ -301,12 +298,12 @@ enum xferunit {
 };
 
 /* DMAADDRT_(dist)_(increase/fix)_(src)_(increase/fix) */
-#define A_INC     0x0
-#define A_FIX     0x1
-#define A_LN      0x0
-#define A_IO      0x1
-#define A_PH      0x2
-#define A_PV      0x3
+#define A_INC		0x0
+#define A_FIX		0x1
+#define A_LN		0x0
+#define A_IO		0x1
+#define A_PH		0x2
+#define A_PV		0x3
 
 enum addrt {
 	/*NDMA address type*/
@@ -340,10 +337,10 @@ enum addrt {
 };
 
 /* use this to specifiy hardware channel number */
-#define DMACH_LOW_LEVEL	(1<<28)	
+#define DMACH_LOW_LEVEL		(1<<28)	
 
 /* we have 16 dma channels */
-#define SW_DMA_CHANNELS		(16)
+#define SW_DMA_CHANNELS		16)
 
 /* types */
 enum sw_dma_state {

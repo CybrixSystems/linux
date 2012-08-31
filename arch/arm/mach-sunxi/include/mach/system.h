@@ -1,7 +1,10 @@
 /*
- * arch/arm/mach-sun5i/include/mach/system.h
+ * arch/arm/mach-sunxi/include/mach/system.h
  *
- * (C) Copyright 2007-2012
+ * (C) Copyright 2012
+ * Mateusz Krawczuk <willingmagic@cybrix.pl>
+ * 
+ * Original code by:
  * Allwinner Technology Co., Ltd. <www.allwinnertech.com>
  * Benn Huang <benn@allwinnertech.com>
  *
@@ -15,10 +18,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- * MA 02111-1307 USA
  */
  
 #ifndef __SW_SYSTEM_H
